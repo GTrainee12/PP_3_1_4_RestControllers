@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Information</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .menu {
+            background-color: #ffffff;
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            z-index: 1000;
+            top: 70px;
+        }
+        .container-main {
+            margin-left: 220px;
+            margin-right: 20px;
+            padding-top: 76px;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+        }
+
+        .col-constructor-name {
+            font-size: 16px;
+        }
+        .user-info {
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body style="background-color: #f8f9fa;">
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand ml-5 text-white">Admin Panel</a>
+    <div class="user-info text-white">
+        <span id="user-email"></span> | <span id="user-roles"></span>
+    </div>
+    <form id="logout-form" action="/logout" method="POST">
+        <button class="btn btn-danger" type="submit">Logout</button>
+    </form>
+</nav>
+
+<div class="menu">
+</div>
+
+<div class="container-main">
+    <div>
+        <h1>User Information Page</h1>
+        <br>
+        <div class="tab-content" id="myTabContent">
+            <div style="margin-left: 20px">
+                <h4>About User</h4>
+            </div>
+            <div class="table-container" style="border: 1px solid #ccc; background-color: #fff; padding: 15px;">
+
+                <table class="table table-hover table-striped" style="background-color: white; width: 100%; font-size: 14px;">
+                    <thead>
+                    <tr>
+                        <th class="col-constructor-name">ID</th>
+                        <th class="col-constructor-name">Email</th>
+                        <th class="col-constructor-name">First Name</th>
+                        <th class="col-constructor-name">Last Name</th>
+                        <th class="col-constructor-name">Age</th>
+                        <th class="col-constructor-name">Roles</th>
+                    </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/js/user.js"></script>
+</body>
+</html>

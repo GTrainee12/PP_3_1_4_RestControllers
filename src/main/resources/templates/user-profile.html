@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background-color: #f0f0f5;
+    }
+
+    .profile-container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .profile-field {
+      margin: 15px 0;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    span {
+      display: block;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      color: #555;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .btn-logout {
+      background-color: #f44336;
+    }
+
+    .btn-logout:hover {
+      background-color: #d32f2f;
+    }
+
+    a button {
+      text-decoration: none;
+    }
+
+    .profile-field span {
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+<div class="profile-container">
+  <h1>User Profile</h1>
+  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+  <fieldset>
+    <div class="profile-field">
+      <label for="email">Email:</label>
+      <span th:text="${user.email}" id="email"></span>
+    </div>
+
+    <div class="profile-field">
+      <label for="firstName">First Name:</label>
+      <span th:text="${user.firstName}" id="firstName"></span>
+    </div>
+
+    <div class="profile-field">
+      <label for="lastName">Last Name:</label>
+      <span th:text="${user.lastName}" id="lastName"></span>
+    </div>
+
+    <div class="profile-field">
+      <label for="age">Age:</label>
+      <span th:text="${user.age}" id="age"></span>
+    </div>
+
+    <div class="profile-field">
+      <label for="roles">Roles:</label>
+      <span th:text="${user.role}" id="roles"></span>
+    </div>
+  </fieldset>
+
+  <div class="buttons">
+    <a th:href="@{/user/update-profile}" title="Update Profile">
+      <button aria-label="Update Profile">Update</button>
+    </a>
+
+    <form th:action="@{/logout}" method="post">
+      <button class="btn-logout" type="submit" aria-label="Logout">Logout</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
