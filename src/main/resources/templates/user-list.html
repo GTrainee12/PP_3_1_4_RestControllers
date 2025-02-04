@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        .menu {
+            background-color: white;
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            z-index: 1000;
+            top: 70px;
+        }
+
+        .container-main {
+            margin-left: 220px;
+            padding-top: 76px;
+        }
+
+        .table-container {
+            max-height: 1000px;
+            overflow-y: auto;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info {
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body style="background-color: #f8f9fa;">
+
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand ml-5 text-white">Admin Panel</a>
+    <div class="user-info text-white">
+        <span id="user-email"></span> | <span id="user-roles"></span>
+    </div>
+    <form id="logout-form" action="/logout" method="POST">
+        <button class="btn btn-danger" type="submit">Logout</button>
+    </form>
+</nav>
+
+
+<div class="menu">
+    <button class="btn btn-primary w-100 mb-2">Admin</button>
+    <button id="showCurrentUser" class="btn btn-secondary w-100">Users</button>
+</div>
+
+<div class="container-main">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <button class="btn btn-success mt-3" onclick="showAddUserForm()">Add User</button>
+    </ul>
+    <div>
+        <h3>Users</h3>
+        <div class="table-container">
+            <table class="table table-hover table-striped" id="users-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Roles</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userModalTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="userForm">
+                    <input type="hidden" id="userId">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control" id="age" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Roles</label>
+                        <div id="roles-container"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/js/admin.js"></script>
+
+</body>
+</html>

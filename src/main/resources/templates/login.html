@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login and Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(248, 249, 250);
+        }
+
+        .form {
+            width: 100%;
+            max-width: 380px;
+            padding-top: 10px;
+            margin-top: 40px;
+            background-color: rgb(248, 249, 250);
+        }
+
+        .wider-button {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+<div class="form">
+    <form role="form" action="/login" method="POST">
+        <h2 class="font-weight-bold">Please enter or register</h2>
+        <br>
+        <div class="form-group">
+            <a href="@{/login}" class="btn btn-primary btn-block wider-button">Sign in</a>
+        </div>
+    </form>
+    <div class="text-center mt-3">
+        <button type="button" class="btn btn-secondary wider-button" data-toggle="modal" data-target="#registerModal">
+            Register
+        </button>
+    </div>
+</div>
+
+
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control" id="age" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Roles</label>
+                        <div id="roles-container-reg"></div>
+                    </div>
+                    <button type="button" class="btn btn-primary wider-button" id="registerSubmit">Register</button>
+                </form>
+                <div id="registerMessage" class="mt-3" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/js/security.js"></script>
+</body>
+
+</html>
